@@ -35,6 +35,11 @@ io.on("connection", (socket) => {
     socket.on("username", (username) => {
         console.log("username", username);
     })
+
+    socket.on("chat msg", (msg) => {
+        console.log("msg", msg);
+        io.emit("chat msg", msg);
+    })
 })
 
 module.exports = {app: app, server: server};

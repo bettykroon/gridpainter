@@ -1,8 +1,91 @@
+/*
+    colors:
+
+    #fdffff  vit
+    #e7af1b  orange
+    #217543  grön
+    #94cff0  blå
+*/
+
+body {
+    background-color: #fdffff;
+}
+
+#nameContainer {
+    background-color: #217543;
+    border-radius: 10px;
+    width: 40%;
+    margin: auto;
+    margin-top: 10%;
+    height: 50%;
+    text-align: center;
+}
+
+#nameContainer h2 {
+    padding: 20px;
+    color: #e7af1b;
+    font-size: 2rem;
+}
+
+#enterName {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#submit {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color: #e7af1b;
+    color: #217543;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #94cff0;
+    color: #fdffff;
+}
+
 #game {
     display: none;
+    padding: 20px;
+}
+
+#game h1 {
+    text-align: center;
+    color: #217543;
+}
+
+#game p{
+    text-align: center;
+    color: #e7af1b;
+}
+
+strong {
+    color: #217543;
+}
+
+#myColor {
+    width: 50px;
+    height: 20px;
+    display: inline-block;
+}
+
+#flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 #container {
+    width: auto;
     display: grid;
     grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
@@ -13,22 +96,72 @@
     cursor: pointer;
 }
 
-#nameContainer {
-    border: 1px solid blue;
-    width: 50%;
-    margin: auto;
-    height: 50%;
-    text-align: center;
+#chat {
+    border: 1px solid #217543;
+    width: 40%;
+    border-radius: 10px;
 }
 
-#enterName {
-    padding: 8px;
+#messages {
+    border-radius: 4px;
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
 }
 
-#submit {
-    margin: auto;
-    padding: 8px;
-    border: 1px solid red;
-    width: 30%;
+#form {
+    margin-top: 10px;
+}
+
+#inputMsg {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#form button {
+    width: 19%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #e7af1b;
+    background-color: #e7af1b;
+    color: #217543;
+    border-radius: 4px;
+    box-sizing: border-box;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#li {
+    width: 100%;
+    padding: 20px 0px;
+    margin: 10px 0;
+}
+
+#msg {
+    width: auto;
+    padding: 8px;
+    border-radius: 4px;
 }

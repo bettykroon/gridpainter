@@ -1,27 +1,63 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <script defer src="./javascripts/script.js"></script>
-  <script src="socket.io/socket.io.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <title>Document</title>
 </head>
 
+<style>
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a15, #a16, #a17, #a18, #a19, #a20, #a21, #a22, #a23, #a24, #a25, #a26, #a27, #a28, #a29 {
+        background-color: pink;
+    }
+    #a30, #a31, #a32, #a33, #a34, #a35, #a36, #a37, #a38, #a39, #a40, #a41, #a42, #a43, #a44 {
+        background-color: green;
+    }
+    #a45, #a46, #a47, #a48, #a49, #a50, #a51, #a52, #a53, #a54, #a55, #a56, #a57, #a58, #a59 {
+        background-color: black;
+    }
+    #a60, #a61, #a62, #a63, #a64, #a65, #a66, #a67, #a68, #a69, #a70, #a71, #a72, #a73, #a74 {
+        background-color: orange;
+    }
+    #a75, #a76, #a77, #a78, #a79, #a80, #a81, #a82, #a83, #a84, #a85, #a86, #a87, #a88, #a89 {
+        background-color: aqua;
+    }
+    #a90, #a91, #a92, #a93, #a94, #a95, #a96, #a97, #a98, #a99, #a100, #a101, #a102, #a103, #a104 {
+        background-color: aqua;
+    }
+    #a105, #a106, #a107, #a108, #a109, #a110, #a111, #a112, #a113, #a114, #a115, #a116, #a117, #a118, #a119 {
+        background-color: aqua;
+    }
+    #a120, #a121, #a122, #a123, #a124, #a125, #a126, #a127, #a128, #a129, #a130, #a131, #a132, #a133, #a134 {
+        background-color: aqua;
+    }
+    #a135, #a136, #a137, #a138, #a139, #a140, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+    #a0, #a1, #a2, #a3, #a4, #a5, #a6, #a7, #a8, #a9, #a10, #a11, #a12, #a13, #a14 {
+        background-color: aqua;
+    }
+</style>
+
 <body>
-  <div id="nameContainer">
-    <h2>Välkommen till Grid Painter</h2>
-    <input id="enterName" type="text" placeholder="Ange ditt namn:">
-    <div id="submit">Skicka</div>
-  </div>
-
-
-  <div id="game">
-    <h1>Grid Painter</h1>
-    <p>Välkommen till Grid Painter <strong id="name"></strong></p>
-    <p>Din färg är: <span id="myColor"></span></p>
-  
-    <div id="flex">
-      <div id="container">
+    <div id="container">
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
@@ -249,19 +285,22 @@
         <div class="item"></div>
       </div>
 
-      <div id="chat">
-        <ul id="messages"></ul>
-  
-        <form id="form">
-          <input id="inputMsg" type="text" placeholder="meddelande">
-          <button>Skicka</button>
-        </form>
-      </div>
-    </div>
-    <button>Spara</button>
-    <button>Klar</button>
-  </div>
+      <script>
+        let items = document.getElementsByClassName("item");
 
+        for (let i = 0; i < items.length; i++) {
+            items[i].setAttribute("id", "a" + i);
+            
+            items[i].addEventListener("click", (e) => {
+                let pixel = document.getElementById(e.target.id);
+                pixel.style.backgroundColor = myColor;
+
+                let obj = {id: e.target.id, color: myColor, name: socket.id};
+                array.push(obj);
+
+                socket.emit("array", {array: array});
+            })
+        }
+      </script>
 </body>
-
 </html>
