@@ -8,6 +8,7 @@ let yourName = document.getElementById("name");
 let form = document.getElementById("form");
 let message = document.getElementById("inputMsg");
 let myColor = document.getElementById("myColor");
+let saveBtn = document.getElementById("save");
 
 const socket = io();
 
@@ -73,4 +74,10 @@ socket.on("chat msg", (msg) => {
     } else {
     chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#ccc;color:#217543;float:left;'>" + msg.namn + ": " + msg.text + "</p></li><br>");
     }
+})
+
+saveBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    socket.emit("database", {colors: array});
 })
