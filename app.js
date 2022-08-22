@@ -7,6 +7,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -17,4 +19,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-module.exports = app;
+io.on("connection", (socket) => {
+    console.log("user connected", socket.id);
+    io.emit("id", socket.id);
+
+    socket.on("disconnect", () => {
+        console.log("user disconnected");
+    });
+
+    socket.on("chat msg", (msg) => {
+        console.log("msg", msg);
+        io.emit("chat msg", msg);
+    })
+
+    socket.on("username", (username) => {
+        console.log("username", username);
+    })
+})
+
+module.exports = {app: app, server: server};
