@@ -11,9 +11,9 @@ var app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
-const { MongoClient } = require('mongodb');
+/*const { MongoClient } = require('mongodb');
 
-const url = "mongodb+srv://bettykroon:Hjhbkjtmdba13!@cluster0.ghy7r.mongodb.net/?retryWrites=true&w=majority";
+const url = "";
 
 const client = new MongoClient(url);
 
@@ -22,11 +22,16 @@ async function run(){
         console.log("hej");
         const database = client.db('cluster0');
         const collection = database.collection("colors");
+
+        const query = { color: "blue" };
+        const color = await collection.findOne(query);
+
+        console.log(color);
     } finally {
         await client.close();
     }
 }
-run().catch(console.dir)
+run().catch(console.dir)*/
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -59,7 +64,7 @@ io.on("connection", (socket) => {
         io.emit("chat msg", msg);
     })
 
-    socket.on("database", (colors) => {
+    /*socket.on("database", (colors) => {
         const database = client.db('cluster0');
         const collection = database.collection("colors");
         collection.insertOne({
@@ -68,7 +73,7 @@ io.on("connection", (socket) => {
         .then(result => {
             result.json(result);
         })
-    })
+    })*/
 })
 
 module.exports = {app: app, server: server};
