@@ -52,13 +52,17 @@ for (let i = 0; i < items.length; i++) {
 }
 
 //Färgar de rutor som andra har färglagt
-socket.on("array", (array) => {
-    for (let i = 0; i < array.array.length; i++) {
-        let pixelId = document.getElementById(array.array[i].id);
-        let colorFromUser = array.array[i].color;
+socket.on("array", (colorArray) => {
+    console.log(colorArray.array);
+    for (let i = 0; i < colorArray.array.length; i++) {
+        console.log();
+        let pixelId = document.getElementById(colorArray.array[i].id);
+        let colorFromUser = colorArray.array[i].color;
 
-        pixelId.style.backgroundColor = colorFromUser;   
+        pixelId.style.backgroundColor = colorFromUser; 
     }
+    let obj = colorArray.array;
+    array = obj;
 })
 
 //Skickar ett meddelande i chatten
