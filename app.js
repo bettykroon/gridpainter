@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config({path: './secret.env'});
+const mongoose =  require("mongoose")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,6 +42,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+//////TEST////////
+
+const url = "mongodb+srv://Mikaela:mikaela90@cluster0.qkpmecu.mongodb.net/?retryWrites=true&w=majority"
+
+async function init(){
+    try{
+        const options = {useNewUrlParser: true, useUnifiedTopology: true}
+       await mongoose.connect(url, options)
+        console.log("Connected to the database")
+    } catch(error){
+        console.error(error)
+    }
+}
+
+init()
+
+
+
+////////////////
+
+
+
 
 io.on("connection", (socket) => {
     console.log("user connected", socket.id);
