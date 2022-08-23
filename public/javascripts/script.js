@@ -28,14 +28,17 @@ submit.addEventListener("click", (e) => {
         nameContainer.style.display = "none";
         yourName.innerHTML = nameInput.value;
 
+        //Får en slumpad färg
         color = Math.floor(Math.random()*16777215).toString(16);
         myColor.style.backgroundColor = color;
     }
 })
 
+//Lägger till ett id på varje ruta
 for (let i = 0; i < items.length; i++) {
     items[i].setAttribute("id", i);
     
+    //Färgar den ruta du klickat på med din färg
     items[i].addEventListener("click", (e) => {
         let pixel = document.getElementById(e.target.id);
         pixel.style.backgroundColor = color;
@@ -43,10 +46,12 @@ for (let i = 0; i < items.length; i++) {
         let obj = {id: e.target.id, color: color, name: socket.id};
         array.push(obj);
 
+        //Skickar arrayen med ifyllda rutor
         socket.emit("array", {array: array});
     })
 }
 
+//Färgar de rutor som andra har färglagt
 socket.on("array", (array) => {
     for (let i = 0; i < array.array.length; i++) {
         let pixelId = document.getElementById(array.array[i].id);
@@ -56,6 +61,7 @@ socket.on("array", (array) => {
     }
 })
 
+//Skickar ett meddelande i chatten
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -65,17 +71,21 @@ form.addEventListener("submit", (e) => {
     }
 })
 
+//Skriver ut meddelandet i chatten
 socket.on("chat msg", (msg) => {
     let chatt = document.getElementById("messages");
     console.log(msg);
 
     if(msg.id === socket.id){
-    chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#e7af1b;color:white;float:right;'>" + msg.text + "</p></li><br>")
+        //Om du själv har skickat meddelandet
+        chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#e7af1b;color:white;float:right;'>" + msg.text + "</p></li><br>")
     } else {
-    chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#ccc;color:#217543;float:left;'>" + msg.namn + ": " + msg.text + "</p></li><br>");
+        //Om någon annan skickat meddelandet
+        chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#ccc;color:#217543;float:left;'>" + msg.namn + ": " + msg.text + "</p></li><br>");
     }
 })
 
+//Spara knapp
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
