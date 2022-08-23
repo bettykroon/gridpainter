@@ -12,28 +12,6 @@ var app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
-/*const { MongoClient } = require('mongodb');
-
-const url = "";
-
-const client = new MongoClient(url);
-
-async function run(){
-    try {
-        console.log("hej");
-        const database = client.db('cluster0');
-        const collection = database.collection("colors");
-
-        const query = { color: "blue" };
-        const color = await collection.findOne(query);
-
-        console.log(color);
-    } finally {
-        await client.close();
-    }
-}
-run().catch(console.dir)*/
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -43,15 +21,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-
-//////TEST////////
-
 const url = "mongodb+srv://Mikaela:mikaela90@cluster0.qkpmecu.mongodb.net/?retryWrites=true&w=majority"
 
 async function init(){
     try{
         const options = {useNewUrlParser: true, useUnifiedTopology: true}
-       await mongoose.connect(url, options)
+        await mongoose.connect(url, options)
         console.log("Connected to the database")
     } catch(error){
         console.error(error)
@@ -59,13 +34,6 @@ async function init(){
 }
 
 init()
-
-
-
-////////////////
-
-
-
 
 io.on("connection", (socket) => {
     console.log("user connected", socket.id);
@@ -89,16 +57,10 @@ io.on("connection", (socket) => {
         io.emit("chat msg", msg);
     })
 
-    /*socket.on("database", (colors) => {
-        const database = client.db('cluster0');
-        const collection = database.collection("colors");
-        collection.insertOne({
-            array: colors
-        })
-        .then(result => {
-            result.json(result);
-        })
-    })*/
+    socket.on("database", (colors) => {
+        console.log(colors);
+        //Skicka colors till databas
+    })
 })
 
 module.exports = {app: app, server: server};
