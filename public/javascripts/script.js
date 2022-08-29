@@ -32,6 +32,8 @@ submit.addEventListener("click", (e) => {
         //Får en slumpad färg
         color = Math.floor(Math.random()*16777215).toString(16);
         myColor.style.backgroundColor = color;
+    } else {
+        alert("Vänligen fyll i ditt namn!")
     }
 })
 

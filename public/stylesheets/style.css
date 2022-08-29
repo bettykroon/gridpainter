@@ -20,6 +20,7 @@ body {
     margin-top: 10%;
     height: 50%;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #nameContainer h2 {
@@ -92,6 +93,7 @@ strong {
     display: grid;
     grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .item {
@@ -104,6 +106,7 @@ strong {
     width: 40%;
     border-radius: 10px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #messages {
@@ -131,6 +134,7 @@ strong {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 button {
@@ -143,6 +147,7 @@ button {
     border-radius: 4px;
     box-sizing: border-box;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #li {
@@ -155,4 +160,5 @@ button {
     width: auto;
     padding: 8px;
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
