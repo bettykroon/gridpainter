@@ -55,10 +55,6 @@ io.on("connection", (socket) => {
         console.log("msg", msg);
         io.emit("chat msg", msg);
     })
-
-    socket.on("database", (colors) => {
-        console.log("c", colors);
-    })
 })
 
 module.exports = {app: app, server: server};

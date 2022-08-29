@@ -17,6 +17,16 @@ let array = [];
 
 let color = "";
 
+//Hämtar arrayen från databasen
+window.onload = (e) => {
+    fetch("http://localhost:3000/users")
+    .then(res => res.json())
+    .then(data => {
+        array = data[0].colors;
+        socket.emit("array", {array: array});
+    })
+}
+
 //Funktion när du skriver in ditt namn
 submit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -37,8 +47,6 @@ submit.addEventListener("click", (e) => {
         alert("Vänligen fyll i ditt namn!")
     }
 })
-
-
 
 //Lägger till ett id på varje ruta
 for (let i = 0; i < items.length; i++) {
@@ -99,6 +107,7 @@ socket.on("chat msg", (msg) => {
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
+    //Skickar array till databas
     fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
@@ -110,8 +119,6 @@ saveBtn.addEventListener("click", (e) => {
     .then(data => {
         console.log(data);
     })
-
-    socket.emit("database", {colors: array});
 })
 
 
@@ -119,6 +126,7 @@ saveBtn.addEventListener("click", (e) => {
 restart.addEventListener("click", (e) => {
     e.preventDefault();
 
+    //Tömmer arrayen och skickar till databasen
     array = [];
 
     fetch("http://localhost:3000/users", {
@@ -133,7 +141,12 @@ restart.addEventListener("click", (e) => {
         console.log(data);
     })
 
-    window.location.reload();
+    //Töm rutorna
+    for (let i = 0; i < items.length; i++) {
+        let pixel = document.getElementById(items[i].id);
+        pixel.style.backgroundColor = "transparent";
 
-    socket.emit("database", {colors: array});
+        socket.emit("array", {array: array});
+    }
+
 })

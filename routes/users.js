@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
   })
 })
 
+//Uppdaterar arrayen med färger i databasen
 router.post("/", (req, res) => {
   console.log("req", req.body);
   req.app.locals.db.collection("colors").updateOne(
