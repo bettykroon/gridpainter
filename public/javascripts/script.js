@@ -27,12 +27,15 @@ submit.addEventListener("click", (e) => {
         game.style.display = "block";
         nameContainer.style.display = "none";
         yourName.innerHTML = nameInput.value;
+        
 
         //Får en slumpad färg
         color = Math.floor(Math.random()*16777215).toString(16);
         myColor.style.backgroundColor = color;
     }
 })
+
+
 
 //Lägger till ett id på varje ruta
 for (let i = 0; i < items.length; i++) {

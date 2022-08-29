@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Grid Painter</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script defer src="./javascripts/script.js"></script>
   <script src="socket.io/socket.io.js"></script>
@@ -253,8 +253,10 @@
         <ul id="messages"></ul>
   
         <form id="form">
-          <input id="inputMsg" type="text" placeholder="meddelande">
-          <button>Skicka</button>
+          <div id="msgDiv">
+            <input id="inputMsg" type="text" placeholder="Skriv ditt meddelander">
+            <button>Skicka</button>
+          </div>
         </form>
       </div>
     </div>

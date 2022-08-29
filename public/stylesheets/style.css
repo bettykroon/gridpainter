@@ -74,6 +74,7 @@ strong {
 }
 
 #myColor {
+    border: 1px solid black;
     width: 50px;
     height: 20px;
     display: inline-block;
@@ -100,6 +101,7 @@ strong {
     border: 1px solid #217543;
     width: 40%;
     border-radius: 10px;
+    position: relative;
 }
 
 #messages {
@@ -113,10 +115,16 @@ strong {
     margin-top: 10px;
 }
 
+#msgDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 #inputMsg {
     width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 0px 0px 5px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -124,7 +132,7 @@ strong {
 }
 
 #form button {
-    width: 19%;
+    width: 17%;
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #e7af1b;
