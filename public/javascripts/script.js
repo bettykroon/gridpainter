@@ -90,7 +90,7 @@ socket.on("chat msg", (msg) => {
         chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#e7af1b;color:white;float:right;'>" + msg.text + "</p></li><br>")
     } else {
         //Om någon annan skickat meddelandet
-        chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#ccc;color:#217543;float:left;'>" + msg.namn + ": " + msg.text + "</p></li><br>");
+        chatt.insertAdjacentHTML("beforeend", "<li id='li'><p id='msg' style='background-color:#217543;color:white;float:left;'>" + msg.namn + ": " + msg.text + "</p></li><br>");
     }
 })
 
