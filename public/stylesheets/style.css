@@ -9,6 +9,7 @@
 
 body {
     background-color: #fdffff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #nameContainer {
@@ -131,7 +132,7 @@ strong {
     box-sizing: border-box;
 }
 
-#form button {
+button {
     width: 17%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -142,25 +143,6 @@ strong {
     box-sizing: border-box;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #li {
     width: 100%;
