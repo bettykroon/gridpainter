@@ -72,6 +72,7 @@ body {
 
 strong {
     color: #217543;
+    text-transform: capitalize;
 }
 
 #myColor {
