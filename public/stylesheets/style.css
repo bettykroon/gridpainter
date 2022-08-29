@@ -9,6 +9,7 @@
 
 body {
     background-color: #fdffff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #nameContainer {
@@ -19,6 +20,7 @@ body {
     margin-top: 10%;
     height: 50%;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #nameContainer h2 {
@@ -71,9 +73,11 @@ body {
 
 strong {
     color: #217543;
+    text-transform: capitalize;
 }
 
 #myColor {
+    border: 1px solid black;
     width: 50px;
     height: 20px;
     display: inline-block;
@@ -89,6 +93,7 @@ strong {
     display: grid;
     grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .item {
@@ -100,6 +105,8 @@ strong {
     border: 1px solid #217543;
     width: 40%;
     border-radius: 10px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #messages {
@@ -113,18 +120,25 @@ strong {
     margin-top: 10px;
 }
 
+#msgDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 #inputMsg {
     width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 0px 0px 5px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#form button {
-    width: 19%;
+button {
+    width: 17%;
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #e7af1b;
@@ -133,26 +147,8 @@ strong {
     border-radius: 4px;
     box-sizing: border-box;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #li {
     width: 100%;
@@ -164,4 +160,5 @@ strong {
     width: auto;
     padding: 8px;
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
