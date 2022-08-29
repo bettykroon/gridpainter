@@ -9,6 +9,7 @@ let form = document.getElementById("form");
 let message = document.getElementById("inputMsg");
 let myColor = document.getElementById("myColor");
 let saveBtn = document.getElementById("save");
+let restart = document.getElementById("restart");
 
 const socket = io();
 
@@ -97,6 +98,42 @@ socket.on("chat msg", (msg) => {
 //Spara knapp
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
+
+    fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(array)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+
+    socket.emit("database", {colors: array});
+})
+
+
+//Börja om knapp
+restart.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    array = [];
+
+    fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(array)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+
+    window.location.reload();
 
     socket.emit("database", {colors: array});
 })

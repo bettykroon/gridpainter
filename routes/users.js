@@ -1,19 +1,23 @@
 var express = require('express');
+const { ObjectId } = require('mongodb');
 var router = express.Router();
-const mongoose = require("mongoose")
-const grupparbete = require("../model/test")
 
-/* GET users listing. */
-////Bara ett test för att se att det fungerar////
-router.get('/', async(req, res, next) =>{
-  const grupper = await grupparbete.find()
-  res.status(200).json(grupper)
-  
-});
-router.post("/", async(req, res)=>{
-  const grupp = new grupparbete(req.body)
-  await grupp.save();
-  res.status(201).json(grupp)
+router.get("/", (req, res) => {
+  req.app.locals.db.collection("colors").find().toArray()
+  .then(result => {
+    res.json(result);
+  })
+})
+
+router.post("/", (req, res) => {
+  console.log("req", req.body);
+  req.app.locals.db.collection("colors").updateOne(
+    {_id: ObjectId("630c82ea6b08834ec4cf10f5")},
+    {$set: {colors: req.body}}
+  )
+  .then(result => {
+    console.log(result);
+  })
 })
 
 module.exports = router;
