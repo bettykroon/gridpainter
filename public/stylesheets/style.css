@@ -83,9 +83,17 @@ strong {
     display: inline-block;
 }
 
-#flex {
+#flex, #picture {
     display: flex;
     justify-content: space-between;
+}
+
+#pictureContainer {
+    width: auto;
+    display: grid;
+    grid-template-columns: 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px;
+    grid-template-rows: 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #container {
@@ -96,7 +104,7 @@ strong {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.item {
+.item, .pictureItem {
     border: 1px solid black;
     cursor: pointer;
 }

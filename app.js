@@ -56,8 +56,8 @@ io.on("connection", (socket) => {
         io.emit("chat msg", msg);
     })
 
-    socket.on("database", (colors) => {
-        console.log("c", colors);
+    socket.on("picture", (img) => {
+        io.emit("picture", img);
     })
 })
 
