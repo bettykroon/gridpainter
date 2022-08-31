@@ -55,6 +55,10 @@ io.on("connection", (socket) => {
         console.log("msg", msg);
         io.emit("chat msg", msg);
     })
+
+    socket.on("picture", (img) => {
+        io.emit("picture", img);
+    })
 })
 
 module.exports = {app: app, server: server};
