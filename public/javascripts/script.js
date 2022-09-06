@@ -14,6 +14,7 @@ let restart = document.getElementById("restart");
 let doneBtn = document.getElementById("done");
 let result = document.getElementById("result");
 let score = document.getElementById("score");
+let changeColor = document.getElementById("changeColor");
 
 const socket = io();
 
@@ -159,6 +160,16 @@ function showPicture(){
     }
 } 
 
+function randomColor(){
+    color = colorArray[Math.floor(Math.random() * colorArray.length)];
+    myColor.style.backgroundColor = color;
+}
+
+changeColor.addEventListener("click", (e) => {
+    e.preventDefault();
+    randomColor();
+})
+
 //Funktion när du skriver in ditt namn
 submit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -172,8 +183,7 @@ submit.addEventListener("click", (e) => {
         yourName.innerHTML = nameInput.value;
         
         //Får en slumpad färg
-        color = colorArray[Math.floor(Math.random() * colorArray.length)];
-        myColor.style.backgroundColor = color;
+        randomColor();
     } else {
         alert("Vänligen fyll i ditt namn!")
     }
