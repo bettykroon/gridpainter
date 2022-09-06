@@ -271,16 +271,11 @@ restart.addEventListener("click", (e) => {
     .then(data => {
     })
 
-    // BÖRJA OM PÅ NÅGOT SÄTT
-    //Töm rutorna
-    /*for (let i = 0; i < items.length; i++) {
-        let pixel = document.getElementById(items[i].id);
-        pixel.style.backgroundColor = "transparent";
+    socket.emit("reload", {});
+})
 
-        socket.emit("array", {array: array});
-    }*/
+socket.on("reload", (reload) => {
     window.location.reload();
-
 })
 
 //Klar knapp

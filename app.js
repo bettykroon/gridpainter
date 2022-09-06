@@ -63,6 +63,10 @@ io.on("connection", (socket) => {
     socket.on("done", (done) => {
         io.emit("done", done);
     })
+
+    socket.on("reload", (reload) => {
+        io.emit("reload", reload);
+    })
 })
 
 module.exports = {app: app, server: server};
