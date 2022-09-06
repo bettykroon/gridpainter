@@ -170,3 +170,28 @@ button {
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+#score {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 30%;
+    background-color: #217543;
+    border-radius: 10px;
+    width: 40%;
+    margin: auto;
+    margin-top: 10%;
+    height: 20%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#score strong {
+    color: #e7af1b;
+}
+
+#score p {
+    color: #fdffff;
+    font-size: 1.5rem;
+    padding-top: 50px;
+}

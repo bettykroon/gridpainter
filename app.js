@@ -59,6 +59,10 @@ io.on("connection", (socket) => {
     socket.on("picture", (img) => {
         io.emit("picture", img);
     })
+
+    socket.on("done", (done) => {
+        io.emit("done", done);
+    })
 })
 
 module.exports = {app: app, server: server};
