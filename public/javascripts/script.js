@@ -12,6 +12,9 @@ let myColor = document.getElementById("myColor");
 let saveBtn = document.getElementById("save");
 let restart = document.getElementById("restart");
 let doneBtn = document.getElementById("done");
+let result = document.getElementById("result");
+let score = document.getElementById("score");
+let changeColor = document.getElementById("changeColor");
 
 const socket = io();
 
@@ -21,7 +24,7 @@ let pictureGrid = [];
 
 let array = [];
 
-colorArray = [];
+let colorArray = [];
 
 let color = "";
 
@@ -48,7 +51,7 @@ window.onload = (e) => {
     spelplan();
 }
 
-//Ritar ut rutnätet som ska färgläggas
+//Hämtar grid.json som kommer bli ett tomt rutnät
 function spelplan(){
     fetch("./grid.json", {
         method: "GET",
@@ -64,7 +67,7 @@ function spelplan(){
     })
 }
 
-//Färglägger rutor
+//Skapar rutnätet
 function grid(){
     //Sätter ett id på varje ruta i rutnätet
     for (let i = 0; i < emptyGrid.length; i++) {
@@ -82,6 +85,8 @@ function grid(){
     
             let obj = {id: e.target.id, color: color, name: socket.id};
             array.push(obj);
+
+            score.style.display = "none";
     
             //Skickar arrayen med ifyllda rutor
             socket.emit("array", {array: array});
@@ -155,6 +160,16 @@ function showPicture(){
     }
 } 
 
+function randomColor(){
+    color = colorArray[Math.floor(Math.random() * colorArray.length)];
+    myColor.style.backgroundColor = color;
+}
+
+changeColor.addEventListener("click", (e) => {
+    e.preventDefault();
+    randomColor();
+})
+
 //Funktion när du skriver in ditt namn
 submit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -167,12 +182,8 @@ submit.addEventListener("click", (e) => {
         nameContainer.style.display = "none";
         yourName.innerHTML = nameInput.value;
         
-
         //Får en slumpad färg
-        color = colorArray[Math.floor(Math.random() * colorArray.length)];
-        console.log("c", color);
-        console.log("CA", colorArray);
-        myColor.style.backgroundColor = color;
+        randomColor();
     } else {
         alert("Vänligen fyll i ditt namn!")
     }
@@ -260,19 +271,36 @@ restart.addEventListener("click", (e) => {
     .then(data => {
     })
 
-    // BÖRJA OM PÅ NÅGOT SÄTT
-    //Töm rutorna
-    /*for (let i = 0; i < items.length; i++) {
-        let pixel = document.getElementById(items[i].id);
-        pixel.style.backgroundColor = "transparent";
+    socket.emit("reload", {});
+})
 
-        socket.emit("array", {array: array});
-    }*/
+socket.on("reload", (reload) => {
     window.location.reload();
-
 })
 
 //Klar knapp
 doneBtn.addEventListener("click", (e) => {
+    socket.emit("done", { id: socket.id, done: "yes"});
+})
 
+let playersDone = 0;
+let correctAnswers = 0;
+
+socket.on("done", (done) => {
+    playersDone ++;
+
+    if(playersDone === 2){
+        for (let i = 0; i < array.length; i++) {
+            let hej = pictureGrid.find( o => o.id === JSON.parse(array[i].id));
+
+            if(JSON.parse(array[i].id) === hej.id && array[i].color === hej.color){
+                correctAnswers++;
+                score.style.display = "block";
+                result.innerHTML = (correctAnswers / 225) * 100;
+                console.log("CA", correctAnswers);
+            }
+        }
+        playersDone = 0;
+        correctAnswers = 0;
+    }
 })
