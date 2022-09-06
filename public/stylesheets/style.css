@@ -83,9 +83,17 @@ strong {
     display: inline-block;
 }
 
-#flex {
+#flex, #picture {
     display: flex;
     justify-content: space-between;
+}
+
+#pictureContainer {
+    width: auto;
+    display: grid;
+    grid-template-columns: 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px;
+    grid-template-rows: 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #container {
@@ -96,7 +104,7 @@ strong {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.item {
+.item, .pictureItem {
     border: 1px solid black;
     cursor: pointer;
 }
@@ -161,4 +169,37 @@ button {
     padding: 8px;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#score {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 30%;
+    background-color: #217543;
+    border-radius: 10px;
+    width: 40%;
+    margin: auto;
+    margin-top: 10%;
+    height: 20%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#score strong {
+    color: #e7af1b;
+}
+
+#score p {
+    color: #fdffff;
+    font-size: 1.5rem;
+    padding-top: 50px;
+}
+
+#colorChange {
+    display: flex;
+}
+
+#changeColor {
+    margin: auto;
 }
