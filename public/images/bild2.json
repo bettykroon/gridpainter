@@ -1,6 +1,6 @@
 {
     "colors": [
-        "#ff99ff", "#33ccff", "#99ff99", "#ff6666"
+        "ff99ff", "33ccff", "99ff99", "ff6666"
     ],
     "grid": [
         {"id": 1, "color": "ff99ff"},
