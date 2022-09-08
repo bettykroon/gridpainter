@@ -24,13 +24,13 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = process.env.DB_URL;
 
-MongoClient.connect(url, {
+MongoClient.connect("mongodb://127.0.0.1:27017", {
     useUnifiedTopology: true
 })
 .then(client => {
     console.log("UPPKOPPLAD!!!");
 
-    const db = client.db(process.env.DB);
+    const db = client.db("paintings");
     app.locals.db = db;
 })
 
