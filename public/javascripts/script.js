@@ -15,6 +15,8 @@ let doneBtn = document.getElementById("done");
 let result = document.getElementById("result");
 let score = document.getElementById("score");
 let changeColor = document.getElementById("changeColor");
+let timer = document.getElementById("timer");
+let timerBtn = document.getElementById("timerBtn");
 
 const socket = io();
 
@@ -31,6 +33,38 @@ let color = "";
 let img = "";
 
 let imageToPaint = "";
+
+// Timer 
+timerBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    timer.innerHTML =
+    05 + ":" + 00;
+  startTimer();
+  
+  function startTimer() {
+    var presentTime = timer.innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    if(s==59){m=m-1}
+    if(m<0){
+      return alert("Tiden är ute!")
+    }
+    
+    timer.innerHTML =
+      m + ":" + s;
+    setTimeout(startTimer, 1000);
+    
+  }
+  
+  function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec};
+    if (sec < 0) {sec = "59"};
+    return sec;
+  }
+
+});
+
 
 //Hämtar arrayen från databasen
 window.onload = (e) => {
@@ -304,3 +338,4 @@ socket.on("done", (done) => {
         correctAnswers = 0;
     }
 })
+
