@@ -67,7 +67,7 @@ timerBtn.addEventListener("click", (e) => {
 
 //Hämtar arrayen från databasen
 window.onload = (e) => {
-    fetch("http://localhost:3000/users")
+    fetch("https://gridpaintergame.herokuapp.com/users")
     .then(res => res.json())
     .then(data => {
         array = data[0].colors;
@@ -86,7 +86,7 @@ window.onload = (e) => {
 
 //Hämtar grid.json som kommer bli ett tomt rutnät
 function spelplan(){
-    fetch("./grid.json", {
+    fetch("https://gridpaintergame.herokuapp.com/grid.json", {
         method: "GET",
         headers : { 
             'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ function picture(){
     imageToPaint = {img: randomPicture};
 
     //Hämtar bilden som ska målas av
-    fetch("../images/bild" + randomPicture + ".json", {
+    fetch("https://gridpaintergame.herokuapp.com/images/bild" + randomPicture + ".json", {
         method: "GET",
         headers : { 
             'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ function picture(){
     })
 
     //Sparar bilden i databasen för att alla ska måla av samma bild
-    fetch("http://localhost:3000/users/image", {
+    fetch("https://gridpaintergame.herokuapp.com/users/image", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -166,7 +166,7 @@ function picture(){
 
 //Hämtar bild från databasen
 function pictureFromDatabase(){
-    fetch("../images/bild" + img + ".json", {
+    fetch("https://gridpaintergame.herokuapp.com/images/bild" + img + ".json", {
         method: "GET",
         headers : { 
             'Content-Type': 'application/json',
@@ -264,7 +264,7 @@ saveBtn.addEventListener("click", (e) => {
     console.log(array);
 
     //Skickar array till databas
-    fetch("http://localhost:3000/users", {
+    fetch("https://gridpaintergame.herokuapp.com/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -284,7 +284,7 @@ restart.addEventListener("click", (e) => {
     array = [];
     imageToPaint = "";
 
-    fetch("http://localhost:3000/users", {
+    fetch("https://gridpaintergame.herokuapp.com/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -295,7 +295,7 @@ restart.addEventListener("click", (e) => {
     .then(data => {
     })
 
-    fetch("http://localhost:3000/users/image", {
+    fetch("https://gridpaintergame.herokuapp.com/users/image", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -344,3 +344,4 @@ socket.on("done", (done) => {
         saveBtn.style.display = "inline";
     }
 })
+
