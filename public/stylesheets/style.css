@@ -1,6 +1,5 @@
 /*
     colors:
-
     #fdffff  vit
     #e7af1b  orange
     #217543  grön
@@ -192,7 +191,7 @@ button:hover {
     width: 40%;
     margin: auto;
     margin-top: 10%;
-    height: 20%;
+    height: 40%;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -214,3 +213,8 @@ button:hover {
 #changeColor {
     margin: auto;
 }
+
+#save {
+    display: none;
+}
+

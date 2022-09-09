@@ -65,7 +65,6 @@ timerBtn.addEventListener("click", (e) => {
 
 });
 
-
 //Hämtar arrayen från databasen
 window.onload = (e) => {
     fetch("https://gridpaintergame.herokuapp.com/users")
@@ -121,6 +120,7 @@ function grid(){
             array.push(obj);
 
             score.style.display = "none";
+            saveBtn.style.display = "none";
     
             //Skickar arrayen med ifyllda rutor
             socket.emit("array", {array: array});
@@ -261,6 +261,7 @@ socket.on("chat msg", (msg) => {
 //Spara knapp
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log(array);
 
     //Skickar array till databas
     fetch("https://gridpaintergame.herokuapp.com/users", {
@@ -323,6 +324,7 @@ let correctAnswers = 0;
 socket.on("done", (done) => {
     playersDone ++;
 
+    //ÄNDRA TILL 4
     if(playersDone === 2){
         for (let i = 0; i < array.length; i++) {
             let hej = pictureGrid.find( o => o.id === JSON.parse(array[i].id));
@@ -332,10 +334,14 @@ socket.on("done", (done) => {
                 score.style.display = "block";
                 result.innerHTML = (correctAnswers / 225) * 100;
                 console.log("CA", correctAnswers);
+            } else {
+                score.style.display = "block";
+                result.innerHTML = (correctAnswers / 225) * 100;
             }
         }
         playersDone = 0;
         correctAnswers = 0;
+        saveBtn.style.display = "inline";
     }
 })
 
