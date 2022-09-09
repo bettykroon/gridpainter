@@ -1,6 +1,5 @@
 /*
     colors:
-
     #fdffff  vit
     #e7af1b  orange
     #217543  grön
@@ -109,6 +108,11 @@ strong {
     cursor: pointer;
 }
 
+#timerDiv {
+    width: 30%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 #chat {
     border: 1px solid #217543;
     width: 40%;
@@ -149,7 +153,7 @@ button {
     width: 17%;
     padding: 12px 20px;
     margin: 8px 0;
-    border: 1px solid #e7af1b;
+    border: 0px solid #e7af1b;
     background-color: #e7af1b;
     color: #217543;
     border-radius: 4px;
@@ -157,6 +161,12 @@ button {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+button:hover {
+    background-color: #94cff0;
+    color: #fdffff;
+}
+
 
 #li {
     width: 100%;
@@ -181,7 +191,7 @@ button {
     width: 40%;
     margin: auto;
     margin-top: 10%;
-    height: 20%;
+    height: 40%;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -202,4 +212,8 @@ button {
 
 #changeColor {
     margin: auto;
+}
+
+#save {
+    display: none;
 }

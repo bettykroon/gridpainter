@@ -15,6 +15,8 @@ let doneBtn = document.getElementById("done");
 let result = document.getElementById("result");
 let score = document.getElementById("score");
 let changeColor = document.getElementById("changeColor");
+let timer = document.getElementById("timer");
+let timerBtn = document.getElementById("timerBtn");
 
 const socket = io();
 
@@ -31,6 +33,37 @@ let color = "";
 let img = "";
 
 let imageToPaint = "";
+
+// Timer 
+timerBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    timer.innerHTML =
+    05 + ":" + 00;
+  startTimer();
+  
+  function startTimer() {
+    var presentTime = timer.innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    if(s==59){m=m-1}
+    if(m<0){
+      return alert("Tiden är ute!")
+    }
+    
+    timer.innerHTML =
+      m + ":" + s;
+    setTimeout(startTimer, 1000);
+    
+  }
+  
+  function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec};
+    if (sec < 0) {sec = "59"};
+    return sec;
+  }
+
+});
 
 //Hämtar arrayen från databasen
 window.onload = (e) => {
@@ -87,6 +120,7 @@ function grid(){
             array.push(obj);
 
             score.style.display = "none";
+            saveBtn.style.display = "none";
     
             //Skickar arrayen med ifyllda rutor
             socket.emit("array", {array: array});
@@ -227,6 +261,7 @@ socket.on("chat msg", (msg) => {
 //Spara knapp
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log(array);
 
     //Skickar array till databas
     fetch("http://localhost:3000/users", {
@@ -289,6 +324,7 @@ let correctAnswers = 0;
 socket.on("done", (done) => {
     playersDone ++;
 
+    //ÄNDRA TILL 4
     if(playersDone === 2){
         for (let i = 0; i < array.length; i++) {
             let hej = pictureGrid.find( o => o.id === JSON.parse(array[i].id));
@@ -298,9 +334,13 @@ socket.on("done", (done) => {
                 score.style.display = "block";
                 result.innerHTML = (correctAnswers / 225) * 100;
                 console.log("CA", correctAnswers);
+            } else {
+                score.style.display = "block";
+                result.innerHTML = (correctAnswers / 225) * 100;
             }
         }
         playersDone = 0;
         correctAnswers = 0;
+        saveBtn.style.display = "inline";
     }
 })
