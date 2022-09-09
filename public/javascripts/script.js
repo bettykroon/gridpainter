@@ -40,8 +40,9 @@ timerBtn.addEventListener("click", (e) => {
     timer.innerHTML =
     05 + ":" + 00;
   startTimer();
-  
-  function startTimer() {
+});
+
+function startTimer() {
     var presentTime = timer.innerHTML;
     var timeArray = presentTime.split(/[:]+/);
     var m = timeArray[0];
@@ -55,15 +56,13 @@ timerBtn.addEventListener("click", (e) => {
       m + ":" + s;
     setTimeout(startTimer, 1000);
     
-  }
+}
   
-  function checkSecond(sec) {
+function checkSecond(sec) {
     if (sec < 10 && sec >= 0) {sec = "0" + sec};
     if (sec < 0) {sec = "59"};
     return sec;
-  }
-
-});
+}
 
 //Hämtar arrayen från databasen
 window.onload = (e) => {
@@ -113,6 +112,11 @@ function grid(){
     for (let i = 0; i < items.length; i++) {
         //Färgar den ruta du klickat på med din färg
         items[i].addEventListener("click", (e) => {
+            if(timer.innerHTML === "05:00"){
+                startTimer();
+                timerBtn.style.display = "none";
+            }
+
             let pixel = document.getElementById(e.target.id);
             pixel.style.backgroundColor = color;
     
@@ -324,8 +328,7 @@ let correctAnswers = 0;
 socket.on("done", (done) => {
     playersDone ++;
 
-    //ÄNDRA TILL 4
-    if(playersDone === 2){
+    if(playersDone === 4){
         for (let i = 0; i < array.length; i++) {
             let hej = pictureGrid.find( o => o.id === JSON.parse(array[i].id));
 
